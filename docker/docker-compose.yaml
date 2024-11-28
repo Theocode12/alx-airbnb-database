@@ -1,0 +1,20 @@
+services:
+  db:
+    container_name: mysql-dev
+    image: mysql:8.0
+    volumes:
+      - ./storage/mysql:/var/lib/mysql
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf  # Add this line
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_CHARSET: utf8mb4
+      MYSQL_COLLATION: utf8mb4_unicode_ci
+    ports:
+      - 3306:3306
+    networks:
+      - app-network
+  
+networks:
+  app-network:
+    driver: bridge
