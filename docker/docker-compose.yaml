@@ -2,9 +2,11 @@ services:
   db:
     container_name: mysql-dev
     image: mysql:8.0
+    working_dir: /home
     volumes:
       - ./storage/mysql:/var/lib/mysql
       - ./my.cnf:/etc/mysql/conf.d/my.cnf  # Add this line
+      - ../:/home
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
