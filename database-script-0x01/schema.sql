@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXIST user (
+CREATE TABLE IF NOT EXISTS user (
     user_id VARCHAR(36) PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXIST user (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXIST property (
+CREATE TABLE IF NOT EXISTS property (
     property_id VARCHAR(36) PRIMARY KEY,
     host_id VARCHAR(36),
     FOREIGN KEY(host_id) REFERENCES user(user_id),
@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXIST property (
     updated_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXIST booking (
+CREATE TABLE IF NOT EXISTS booking (
     booking_id VARCHAR(36) PRIMARY KEY,
     property_id VARCHAR(36),
     FOREIGN KEY(property_id) REFERENCES property(property_id),
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXIST booking (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXIST payment (
+CREATE TABLE IF NOT EXISTS payment (
     payment_id VARCHAR(36) PRIMARY KEY,
     booking_id VARCHAR(36),
     FOREIGN KEY(booking_id) REFERENCES booking(booking_id),
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXIST payment (
     payment_method ENUM('credit_card', 'paypal', 'stripe') NOT NULL
 );
 
-CREATE TABLE IF NOT EXIST review (
+CREATE TABLE IF NOT EXISTS review (
     review_id VARCHAR(36) PRIMARY KEY,
     property_id VARCHAR(36),
     FOREIGN KEY(property_id) REFERENCES property(property_id),
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXIST review (
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE IF NOT EXIST message (
+CREATE TABLE IF NOT EXISTS message (
     message_id VARCHAR(36) PRIMARY KEY,
     sender_id VARCHAR(36),
     FOREIGN KEY(sender_id) REFERENCES user(user_id),
