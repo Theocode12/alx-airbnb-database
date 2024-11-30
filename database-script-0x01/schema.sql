@@ -1,3 +1,7 @@
+DROP DATABASE IF EXISTS alxairbnb;
+CREATE DATABASE IF NOT EXISTS alxairbnb;
+USE alxairbnb;
+
 CREATE TABLE IF NOT EXISTS user (
     user_id VARCHAR(36) PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
