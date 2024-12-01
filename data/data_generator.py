@@ -211,6 +211,7 @@ def get_random_text(
 
 
 if __name__ == "__main__":
+    from location import location
     make_random_inserts(
         "user",
         [
@@ -242,7 +243,7 @@ if __name__ == "__main__":
             "foreign:user",
             "string:10",
             "string:30:add_punct",
-            "string:50:add_punct",
+            f"enum:{":".join(location)}",
             "number:3:int:0:9",
         ],
         8000,
